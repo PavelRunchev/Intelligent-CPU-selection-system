@@ -1,0 +1,73 @@
+<div class="container">
+    <form method="POST" class="card p-4 shadow-lg">
+
+        <div class="row">
+
+            <div class="col-12 col-lg-6 mb-5">
+                <label class="form-label form-label-custom ps-3">Марка на процесора</label>
+                <select class="form-select" id="brandSelect" name="brand" >
+                    <option value="">Изберете марка на процесора</option>
+                </select>
+            </div>
+
+             <div class="col-12 col-lg-6 mb-5">
+                    <label class="form-label form-label-custom ps-3">Модел на процесора</label>
+                    <select class="form-select" id="modelSelect" name="cpuName">
+                        <option selected>Изберете модел</option>
+
+                    </select>
+                    <div class="text-muted fst-italic small ps-3">Първо изберете марка на процесора</div>
+            </div>
+
+             <div class="col-12 col-lg-6 mb-5">
+                    <label class="form-label form-label-custom ps-3">Категория на процесора</label>
+                    <select class="form-select" id="categorySelect" name="category">
+                        <option selected>Изберете категория</option>
+                    </select>
+                    <div class="text-muted fst-italic small ps-3">Първо изберете марката на процесора</div>
+            </div>
+
+            <div class="col-12 col-lg-6 mb-5">
+                <label class="form-label form-label-custom ps-3">Максимален бюджет</label>
+                <input type="number" name="budget" class="form-control" placeholder="Например 500" value="{{ user.budget if user else '' }}" required>
+                <div class="text-muted fst-italic small ps-3">Въведете максимален бюджет в евро (&euro;)</div>
+            </div>
+
+            <div class="col-12 col-lg-6 mb-3">
+                <label class="form-label form-label-custom ps-3">Минимална производителност</label>
+                <input type="number" name="cpuMark" class="form-control" placeholder="например 15000" value="{{ user.performance if user else '' }}" required />
+                <div class="text-muted fst-italic small ps-3">Стойност от бенчмарк (cpuMark) - по-голямо означава по-висока производителност</div>
+            </div>
+
+            <div class="col-12 col-lg-6 mb-3">
+                <label class="form-label form-label-custom ps-3">Минимален брой ядра</label>
+                <input type="number" name="cores" class="form-control" placeholder="например 2" value="{{ user.cores | default('') }}" required>
+                <div class="text-muted fst-italic small ps-3">Минимален брой ядра, които процеса трябва да има</div>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-end mt-5">
+            <button
+                    type="submit"
+                    class="btn btn-outline-dark text-nowrap px-4 fw-semibold mx-4"
+            >
+                <i class="bi bi-search"></i> Търсене
+            </button>
+
+            <button
+                type="reset"
+                id="resetBtn"
+                class="btn btn-outline-secondary"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                data-bs-offset="0,08"
+                title="Нулира всички полета във формата"
+                onclick="window.location.href='/'"
+            >
+                <i class="bi bi-arrow-clockwise"></i> Нулиране
+            </button>
+        </div>
+
+    </form>
+</div>

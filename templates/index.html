@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="bg">
+    <head>
+        <meta charset="UTF-8">
+        <title>CPU Recommender System</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+
+    <body>
+
+         {% include 'components/navbar.html' %}
+
+        <main class="mt-5">
+            <h2 class="text-center mb-4">Система за препоръчване на процесори</h2>
+            <h5 class="text-center mb-4">Форма за критерии на процесорите</h5>
+             {% include 'components/form.html' %}
+
+            {% if searched %}
+                {% if result %}
+                    {% include 'components/results.html' %}
+                {% else %}
+                    <div class="mt-5 alert bg-white text-center form-label-custom">Няма намерени процесори по зададените критерии.</div>
+                {% endif %}
+            {% else %}
+                 {% include 'components/demoresult.html' %}
+            {% endif %}
+
+        </main>
+
+         {% include 'components/footer.html' %}
+
+    </body>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+        <script id="data-json" type="application/json">
+          {{ data | tojson }}
+        </script>
+
+        <script id="user-data" type="application/json">
+          {{ user | tojson }}
+        </script>
+
+        <script>
+            const selectedModel = "{{ user.cpuName if user else '' }}";
+            const selectedBrand = "{{ user.brand if user else '' }}";
+            const selectedCategory = "{{ user.category if user else '' }}";
+
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el))
+        </script>
+
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</html>
+

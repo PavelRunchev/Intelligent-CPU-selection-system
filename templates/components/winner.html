@@ -1,0 +1,35 @@
+
+<div class="d-flex justify-content-center mt-4 mb-4">
+
+    <div class="card shadow-lg border-0 w-100" style="max-width: 500px;">
+
+        <div class="card-header bg-dark text-white text-center fw-bold">
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+             Най-добър избор
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+            <i class="bi bi-star-fill text-warning"></i>
+        </div>
+
+        <div class="card-body text-center">
+            <h5 class="card-title form-label-custom">{{ result[0].cpuName }}</h5>
+
+            <div class="d-flex justify-content-center px-4">
+                <p class="card-text text-start w-75 mt-3 ps-5">
+                    <i class="bi bi-coin text-warning-emphasis me-2"></i> Цена: <strong>{{ result[0].price }}</strong> &#8364; <br>
+                    <i class="bi bi-speedometer text-primary me-2"></i> Производителност: <strong>{{ result[0].cpuMark }}</strong> <br>
+                    <i class="bi bi-cpu-fill me-2"></i> Ядра: <strong class="form-label-custom">{{ result[0].cores }}</strong> <br>
+                    <i class="bi bi-thermometer-half text-danger me-2"></i> TDP: <strong>{{ result[0].TDP }}</strong> W <br>
+                    <i class="bi bi-bar-chart-fill text-success me-2"></i> Оценка от TOPSIS: <strong>{{ result[0].topsis_score }}</strong>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="card-footer text-muted small text-center">* Резултатът показва най-балансирания процесор според въведените критерии (цена, производителност и брой ядра), а не задължително най-мощния.</div>
+
+    </div>
+
+</div>
